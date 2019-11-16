@@ -12,7 +12,9 @@ The Laplace approximation computes a normal distribution which approximates the 
 
 We can get some intuition by looking at the 1-dimensional case. This explanation was adapted from [these lecture notes](http://www2.stat.duke.edu/~st118/sta250/laplace.pdf).
 
-Let h(θ) be the density of interest, and let q(θ) be the log density. That is:
+Let h(θ) be the density of interest. h(θ) may not be normal, but we expect that it "looks normal" - the majority of the mass is in a dense region around the mode. 
+
+Let q(θ) be the log density. That is:
 
 q(θ) = log h(θ)
 
