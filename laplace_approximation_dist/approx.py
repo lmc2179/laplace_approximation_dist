@@ -8,6 +8,5 @@ def approx_dist(lnprob, v_init):
 	result = minimize(neg_lnprob, v_init)
 	x_max = result.x
 	h = Hessian(lnprob)(x_max)
-	print(h)
 	dist = multivariate_normal(x_max, -np.linalg.inv(h))
 	return dist
