@@ -29,3 +29,21 @@ class TestApproximation(unittest.TestCase):
         true_dist = beta(2001, 1001)
         self.assertAlmostEqual(float(approx.mean[0]), true_dist.mean(), delta=1e-3)
         self.assertAlmostEqual(float(approx.cov[0]), true_dist.var(), delta=1e-5)
+        
+    def test_linear_regression_posterior(self):
+        def lin_regression_lnprob(v, x=None, y=None):
+            a, b, s = v
+            if s <= 0:
+                return -np.inf
+            y_hat = a + b*x
+            lp = np.sum(norm.logpdf(y, y_hat, s))
+            return lp
+
+        x = np.linspace(0, 5000, 1000)
+        y = 5 - 10*x + np.random.normal(0, 2, 1000)
+        L = partial(lin_regression_lnprob, x=x, y=y)
+            
+        approx = approx_dist(L, np.array([0, 0, 1]))
+        self.assertAlmostEqual(float(approx.mean[0]), 5, delta=1e-1)
+        self.assertAlmostEqual(float(approx.mean[1]), -10, delta=1e-1)
+        self.assertAlmostEqual(float(approx.mean[2]), 2, delta=1e-1)
