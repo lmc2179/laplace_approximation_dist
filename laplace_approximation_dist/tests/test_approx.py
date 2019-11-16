@@ -1,6 +1,6 @@
 import unittest
 import numpy as np
-from scipy.stats import norm, beta
+from scipy.stats import norm, beta, binom
 from laplace_approximation_dist.approx import approx_dist
 from functools import partial
 
@@ -17,4 +17,15 @@ class TestApproximation(unittest.TestCase):
         true_dist = beta(1000, 1000)
         approx = approx_dist(true_dist.logpdf, x0)
         self.assertAlmostEqual(float(approx.mean[0]), true_dist.mean())
+        self.assertAlmostEqual(float(approx.cov[0]), true_dist.var(), delta=1e-5)
+        
+    def test_binomial_observation_posterior(self):
+        x0 = np.array([0.25])
+        def posterior_logpdf(v):
+            if 0 < v < 1:
+                return binom.logpmf(2000, 3000, v)    
+            return -np.inf
+        approx = approx_dist(posterior_logpdf, x0)
+        true_dist = beta(2001, 1001)
+        self.assertAlmostEqual(float(approx.mean[0]), true_dist.mean(), delta=1e-3)
         self.assertAlmostEqual(float(approx.cov[0]), true_dist.var(), delta=1e-5)
