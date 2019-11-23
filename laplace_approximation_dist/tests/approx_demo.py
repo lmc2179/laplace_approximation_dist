@@ -6,9 +6,10 @@ from laplace_approximation_dist.approx import approx_dist
 from functools import partial
 from scipy.stats import binom
 
-# x0 = np.array([1,2])
-# result = approx_dist(multivariate_normal(np.array([0, 0]), np.eye(2)).logpdf, x0)
-# print(result.cov)
+x0 = np.array([1,2])
+multivariate_normal(np.array([0, 0]), np.eye(2))
+result = approx_dist(true_dist.logpdf, x0)
+print(result.mean, result.cov)
 
 # x0 = np.array([1])
 # true_dist = norm(0, 1)
@@ -25,15 +26,15 @@ from scipy.stats import binom
 # plt.show()
 
 # Beta binomial - Bayesian inference
-x0 = np.array([0.25])
-def posterior_logpdf(v):
-    if 0 < v < 1:
-        return binom.logpmf(200, 300, v)    
-    return -np.inf
-approx = approx_dist(posterior_logpdf, x0)
-sns.distplot(beta(201, 101).rvs(5000))
-sns.distplot(approx.rvs(5000))
-plt.show()
+# x0 = np.array([0.25])
+# def posterior_logpdf(v):
+    # if 0 < v < 1:
+        # return binom.logpmf(200, 300, v)    
+    # return -np.inf
+# approx = approx_dist(posterior_logpdf, x0)
+# sns.distplot(beta(201, 101).rvs(5000))
+# sns.distplot(approx.rvs(5000))
+# plt.show()
 
 # Linear regression
 # def lin_regression_lnprob(v, x=None, y=None):

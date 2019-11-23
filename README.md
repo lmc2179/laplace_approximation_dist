@@ -1,10 +1,22 @@
 # laplace_approximation_dist
 
-A package for computing Laplace approximations to log probability densities in Python.
+A package for computing Laplace approximations to log probability densities in Python. The Laplace approximation computes a normal distribution which approximates the distribution of interest. The user sends in a log-probability function with optional optimization/second derivative information, and receives a scipy multivariate_normal which approximates the target distribution.
 
 # How do I use this package?
 
 In order to compute the laplace approximation to the desired distribution, you will need to provide the log-probability function along with (optionally) a function to compute the Hessian of your log-probability. If you do not provide a method to compute the Hessian, it will be computed numerically using a finite difference method.
+
+## Simplest possible example: Normal approximations to normal distribution
+
+
+
+### One-dimensional example
+
+### Multivariate normal
+
+## Bayesian inference: Binomial proportion inference
+
+## Bayesian inference: Linear regression
 
 # How does the Laplace Approximation work?
 
