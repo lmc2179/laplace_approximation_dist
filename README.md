@@ -143,6 +143,7 @@ Note that θₘₐₓ is the maximum by definition, so we've dropped the first-o
 The form above bears a resemblance to a log normal distribution, where we have substituted
 
 a = θₘₐₓ
+
 b = (-q''(θₘₐₓ))⁻¹
 
 So that q(θ) ≈ LogNorm(a, b²). Then we can approximate the original density with a normal distribution 
