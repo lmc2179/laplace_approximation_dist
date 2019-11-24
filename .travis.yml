@@ -1,0 +1,8 @@
+language: python
+python:
+  - "2.7"
+  - "3.4"
+  - "3.5"
+install:
+  - travis_wait travis_retry pip install -r requirements.txt
+script: "nosetests laplace_approximation_dist/tests"
