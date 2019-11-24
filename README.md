@@ -132,23 +132,23 @@ Let h(θ) be the density of interest. h(θ) may not be normal, but we expect tha
 
 Let q(θ) be the log density. That is:
 
-q(θ) = log h(θ)
+	q(θ) = log h(θ)
 
 We'd like to find an approximation to q(θ), which will let us approximate h(θ). If the distribution is sharply peaked around the mode, θₘₐₓ, we can expect to approximate the distribution well if we only approximate the region around θₘₐₓ. To do so, we'll construct a second-order Taylor expansion around the mode:
 
-q(θ) ≈ q(θₘₐₓ) + ½(θ - θₘₐₓ)² q''(θₘₐₓ) = const - (θ - a)² / (2b²)
+	q(θ) ≈ q(θₘₐₓ) + ½(θ - θₘₐₓ)² q''(θₘₐₓ) = const - (θ - a)² / (2b²)
 
 Note that θₘₐₓ is the maximum by definition, so we've dropped the first-order term from the Taylor expansion (since q'(θₘₐₓ) = 0).
 
 The form above bears a resemblance to a log normal distribution, where we have substituted
 
-a = θₘₐₓ
+	a = θₘₐₓ
 
-b = (-q''(θₘₐₓ))⁻¹
+	b = (-q''(θₘₐₓ))⁻¹
 
 So that q(θ) ≈ LogNorm(a, b²). Then we can approximate the original density with a normal distribution 
 
-h(θ) ≈ N(a, b²)
+	h(θ) ≈ N(a, b²)
 
 In the multidimensional case, θₘₐₓ is the mean vector of a multivariate normal, and the negative-inverse hessian matrix gives the covariance matrix (the negative-inverse hessian here acting as the multidimensional analogue of the negative-reciprocal second derivative).
 
