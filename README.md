@@ -1,4 +1,4 @@
-# laplace_approximation_dist
+# laplace_approximation_dist ![travis](https://api.travis-ci.com/lmc2179/laplace_approximation_dist.svg?branch=master)
 
 A package for computing Laplace approximations to log probability densities in Python. The Laplace approximation computes a normal distribution which approximates the distribution of interest. The user sends in a log-probability function with optional optimization/second derivative information, and receives a scipy multivariate_normal which approximates the target distribution.
 
