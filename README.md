@@ -128,17 +128,17 @@ The Laplace approximation computes a normal distribution which approximates the 
 
 We can get some intuition by looking at the 1-dimensional case. This explanation was adapted from [these lecture notes](http://www2.stat.duke.edu/~st118/sta250/laplace.pdf).
 
-Let h(θ) be the density of interest. h(θ) may not be normal, but we expect that it "looks normal" - the majority of the mass is in a dense region around the mode. 
+Let _h(θ)_ be the density of interest. _h(θ)_ may not be normal, but we expect that it "looks normal" - the majority of the mass is in a dense region around the mode. 
 
-Let q(θ) be the log density. That is:
+Let _q(θ)_ be the log density. That is:
 
 	q(θ) = log h(θ)
 
-We'd like to find an approximation to q(θ), which will let us approximate h(θ). If the distribution is sharply peaked around the mode, θₘₐₓ, we can expect to approximate the distribution well if we only approximate the region around θₘₐₓ. To do so, we'll construct a second-order Taylor expansion around the mode:
+We'd like to find an approximation to _q(θ)_, which will let us approximate _h(θ)_. If the distribution is sharply peaked around the mode, _θₘₐₓ_, we can expect to approximate the distribution well if we only approximate the region around _θₘₐₓ_. To do so, we'll construct a second-order Taylor expansion around the mode:
 
 	q(θ) ≈ q(θₘₐₓ) + ½(θ - θₘₐₓ)² q''(θₘₐₓ) = const - (θ - a)² / (2b²)
 
-Note that θₘₐₓ is the maximum by definition, so we've dropped the first-order term from the Taylor expansion (since q'(θₘₐₓ) = 0).
+Note that _θₘₐₓ_ is the maximum by definition, so we've dropped the first-order term from the Taylor expansion (since `q'(θₘₐₓ) = 0`).
 
 The form above bears a resemblance to a log normal distribution, where we have substituted
 
@@ -146,11 +146,11 @@ The form above bears a resemblance to a log normal distribution, where we have s
 
 	b = (-q''(θₘₐₓ))⁻¹
 
-So that q(θ) ≈ LogNorm(a, b²). Then we can approximate the original density with a normal distribution 
+So that `q(θ) ≈ LogNorm(a, b²)`. Then we can approximate the original density with a normal distribution 
 
 	h(θ) ≈ N(a, b²)
 
-In the multidimensional case, θₘₐₓ is the mean vector of a multivariate normal, and the negative-inverse hessian matrix gives the covariance matrix (the negative-inverse hessian here acting as the multidimensional analogue of the negative-reciprocal second derivative).
+In the multidimensional case, _θₘₐₓ_ is the mean vector of a multivariate normal, and the negative-inverse hessian matrix gives the covariance matrix (the negative-inverse hessian here acting as the multidimensional analogue of the negative-reciprocal second derivative).
 
 I found the following resources to be useful reading:
 
